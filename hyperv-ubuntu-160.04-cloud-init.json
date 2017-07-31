@@ -30,7 +30,7 @@
       "<esc><wait10><esc><esc><enter><wait>",
       "set gfxpayload=1024x768<enter>",
       "linux /install/vmlinuz ",
-      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed.cfg ",
+      "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed-cloud-int.cfg ",
       "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
       "hostname={{.Name}} ",
       "fb=false debconf/frontend=noninteractive ",
@@ -51,6 +51,8 @@
     "execute_command": "echo 'ubuntu' | sudo -S -E sh {{.Path}}",
     "scripts": [
       "./linux/ubuntu/update.sh",
+      "./linux/ubuntu/hyperv-xenial.sh",
+      "./linux/ubuntu/hyperv-gen2.sh",
       "./linux/ubuntu/cloud-init.sh",
       "./linux/ubuntu/cleanup.sh"
     ]
